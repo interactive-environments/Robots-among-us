@@ -13,4 +13,3 @@ for network in networks:
     print(f"SSID: {network.ssid}, RSSI: {network.rssi} dB, Channel: {network.channel}")
 wifi.radio.stop_scanning_networks()
 print("Scan complete")
-time.sleep(10)

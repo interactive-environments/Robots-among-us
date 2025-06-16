@@ -1,4 +1,6 @@
-import mac_and_networks
+#uncomment the following line to print MAC address and Available SSIDs
+#import mac_and_networks
+
 from creature import Creature
 from ecosystem import EcoSystem
 from timer import Timer
