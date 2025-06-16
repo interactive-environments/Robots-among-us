@@ -1,3 +1,4 @@
+import mac_and_networks
 from creature import Creature
 from ecosystem import EcoSystem
 from timer import Timer
