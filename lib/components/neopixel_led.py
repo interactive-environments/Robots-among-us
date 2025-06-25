@@ -2,7 +2,9 @@
 
 import time
 import neopixel
+import board
 from pin_config import NEOPIXEL_PIN
+
 
 class NeopixelLED():
     def __init__(self, num_leds = 1, port_leds=NEOPIXEL_PIN):

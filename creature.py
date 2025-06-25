@@ -3,6 +3,9 @@ from components.buzzer import Buzzer
 from components.neopixel_led import NeopixelLED
 from components.vibration_motor import VibrationMotor
 from components.servo_motor import Servo
+from components.slider import Slider
+from components.tof import Tof
+from components.electro_magnet import ElectroMagnet
 from timer import Timer
 import time
 from varspeed import Vspeed
@@ -10,12 +13,21 @@ from behaviours import Behaviours
 import random
 import math
 
+
+# Select your inputs and outputs by uncommenting them here
+##########################################################
+
 button = Button()
 buzzer = Buzzer()
 motor = VibrationMotor()
 led = NeopixelLED(1)
 servo = Servo()
 behaviours = Behaviours()
+tof = Tof()
+electromagnet = ElectroMagnet()
+slider = Slider()
+
+###########################################################
 
 increase = True
 led_power = 255
@@ -61,9 +73,25 @@ class Creature:
             # Update the robot's energy level
             self.energy = int(msg)
 
+###################################################
+    # uncomment the Time of Flight or slider code if you want to use it
+
+
     def sense(self):
         if button.sense() == True:
             return True
+
+        #distance = 150 #distance in mm
+        #if tof.sense(distance) == True:
+        #    return True()
+        #print(tof.sense_range())
+
+        #if slider.sense() > 100:
+        # return True
+        #print (slider.sense())
+
+
+###################################################
 
     def print_state(self):
         if self.current_state != self.previous_state:
@@ -145,7 +173,10 @@ class Creature:
         # - Vibration motor (haptic feedback) on GP14                 #
         # - NeoPixel LED (visual indicators) connected                #
         ###############################################################
-        #buzzer.update(position2)
-        led.update_full_color((position1,0,position2//1000,0)) # Robot-themed color (red + blue)
-        motor.update(position1) # Controls the robot's vibration intensity
+
+        #buzzer.update(50)
+        #buzzer.set_frequency(2000)
+        #electromagnet.update(position1)
+        #led.update_full_color((position1,0,position2//1000,0)) # Robot-themed color (red + blue)
+        #motor.update(position1) # Controls the robot's vibration intensity
         servo.update(position2) # Controls the robot's movement mechanism

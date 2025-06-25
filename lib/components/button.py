@@ -1,6 +1,7 @@
 # button.py
 
 import digitalio
+import board
 from pin_config import BUTTON_PIN
 
 class Button():

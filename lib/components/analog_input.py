@@ -1,8 +1,10 @@
 import board
 import analogio
+from pin_config import SLIDER_PIN
+
 
 class AnalogInput():
-    def __init__(self, port=board.A0):
+    def __init__(self, port=SLIDER_PIN):
         self.input = analogio.AnalogIn(port)
 
     def sense(self, threshold):

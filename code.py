@@ -1,6 +1,3 @@
-#uncomment the following line to print MAC address and Available SSIDs
-#import mac_and_networks
-
 from creature import Creature
 from ecosystem import EcoSystem
 from timer import Timer
@@ -11,6 +8,9 @@ try:
 except ImportError:
     print("WiFi settings are kept in settings.py, please add or change them there!")
     raise
+
+ECOSYSTEM_TIMER_THRESHOLD = 3
+ecosystem_timer = time.monotonic()
 
 # Instantiate the robot - part of the "Robots Among Us" installation
 creature = Creature()
@@ -29,7 +29,10 @@ creature.ecosystem = ecosystem
 while True:
     # This will check for new messages.
     # The behaviour for theses messages is in creature.py -> message()
-    ecosystem.check_for_messages()
+
+    if time.monotonic() - ecosystem_timer > ECOSYSTEM_TIMER_THRESHOLD:
+        ecosystem_timer = time.monotonic()
+        ecosystem.check_for_messages()
 
     # This will trigger the default behaviour that will play.
     # regardless if there is a message or not.

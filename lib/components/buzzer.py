@@ -9,7 +9,7 @@ class Buzzer():
 
     # Takes a value between 0 and 100, then scales it up.
     def update(self, volume):
-        scaledVolume = volume/100*16383
+        scaledVolume = volume/100*65535
         self.buzzer.duty_cycle = int(scaledVolume)
 
     def set_frequency(self, fq):

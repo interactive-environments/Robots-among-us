@@ -1,5 +1,5 @@
-from components.wifi_setup import WiFi
-from components.mqtt_setup import MQTTBroker
+from wifi_setup import WiFi
+from mqtt_setup import MQTTBroker
 from timer import Timer
 import random
 import time
@@ -23,7 +23,7 @@ class EcoSystem:
                 print("Initializing WiFi...")
                 self.wifi = WiFi()
                 self.wifi_connected = True
-                
+
                 print("Initializing MQTT...")
                 self.mqtt = MQTTBroker(self.wifi, ecosystem, self.creature)
                 self.mqtt_connected = True
